@@ -4,7 +4,6 @@ import emailjs from 'emailjs-com';
 import { 
   UserGroupIcon, 
   TrophyIcon, 
-  CurrencyDollarIcon,
   BuildingStorefrontIcon 
 } from '@heroicons/react/24/outline';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -38,12 +37,6 @@ const BecomePartnerPage: React.FC = () => {
       title: t('partners.benefit2.title'),
       description: t('partners.benefit2.description'),
       color: '#E6F52C'
-    },
-    {
-      icon: CurrencyDollarIcon,
-      title: t('partners.benefit3.title'),
-      description: t('partners.benefit3.description'),
-      color: '#D0F2BC'
     }
   ];
 
