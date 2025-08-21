@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #62C02C;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E6F52C;
+}
+
+/* Ensure text is readable */
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+/* Focus styles */
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #62C02C;
+  outline-offset: 2px;
+}
+
+/* iPad specific styles */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* HomePage iPad adjustments */
+  .relative.pt-20.md\\:pt-16.lg\\:pt-24 {
+    padding-top: 1rem !important;
+  }
+  
+  /* HeroSection iPad adjustments */
+  .hero-section {
+    margin-top: 0 !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 1rem !important;
+    min-height: 100vh !important;
+  }
+  
+  .md\:max-w-sm {
+    max-width: 28rem;
+  }
+  
+  .md\:max-w-md {
+    max-width: 32rem;
+  }
+  
+  .lg\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .lg\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+  
+  .lg\:text-7xl {
+    font-size: 4rem;
+    line-height: 1;
+  }
+}
+
+/* Glassmorphism effect */
+.glass {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Header backdrop effect */
+.header-backdrop {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Leaflet Map Styles */
+.leaflet-container {
+  background: #1a1a1a !important;
+}
+
+.leaflet-control-zoom a {
+  background-color: #374151 !important;
+  color: white !important;
+  border: 1px solid #4b5563 !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background-color: #4b5563 !important;
+}
+
+.leaflet-control-attribution {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  color: white !important;
+}
+
+.leaflet-control-attribution a {
+  color: #62C02C !important;
+}
+
+.custom-marker {
+  background: none !important;
+  border: none !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: white !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+.leaflet-popup-tip {
+  background: white !important;
+}
+
+/* Custom 360 degree rotation */
+.hover\:rotate-360:hover {
+  transform: rotate(360deg);
+}
