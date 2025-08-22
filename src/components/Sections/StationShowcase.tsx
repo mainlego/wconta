@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { useLanguage } from '../../contexts/LanguageContext';
-import stationGif from '../../assets/station gif.webm';
+import { isSafari } from '../../utils/browserDetection';
+import stationGifWebm from '../../assets/station gif.webm';
+import stationGifMov from '../../assets/station-gif.mov';
 
 const StationShowcase: React.FC = () => {
   const { t } = useLanguage();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const videoSrc = isSafari() ? stationGifMov : stationGifWebm;
+  const videoType = isSafari() ? 'video/quicktime' : 'video/webm';
 
   const stationImages = [
     {
@@ -57,7 +61,7 @@ const StationShowcase: React.FC = () => {
                   playsInline
                   className="w-full h-full object-cover"
                 >
-                  <source src={stationGif} type="video/webm" />
+                  <source src={videoSrc} type={videoType} />
                 </video>
                 
                 {/* Gradient Overlay */}

@@ -220,8 +220,8 @@ const Header: React.FC = () => {
                       exit={{ opacity: 0, y: -20, scale: 0.9, rotateX: -15 }}
                       transition={{ duration: 0.4, type: "spring" }}
                       className="absolute right-0 mt-4 w-48 bg-gray-800/98 backdrop-blur-3xl rounded-xl shadow-2xl border-2 border-[#62C02C]/40 overflow-hidden"
-                      style={{ zIndex: 99999 }}
-                      style={{
+                      style={{ 
+                        zIndex: 99999,
                         background: 'linear-gradient(135deg, rgba(31, 41, 55, 0.98) 0%, rgba(17, 24, 39, 0.95) 100%)'
                       }}
                     >

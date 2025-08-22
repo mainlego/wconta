@@ -2,11 +2,15 @@ import React from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { Link } from 'react-router-dom';
-import powerbankGif from '../../assets/powerbank gif.webm';
+import { isSafari } from '../../utils/browserDetection';
+import powerbankGifWebm from '../../assets/powerbank gif.webm';
+import powerbankGifMov from '../../assets/powerbank-gif.mov';
 
 const HeroSection: React.FC = () => {
   const { t } = useLanguage();
   const controls = useAnimation();
+  const videoSrc = isSafari() ? powerbankGifMov : powerbankGifWebm;
+  const videoType = isSafari() ? 'video/quicktime' : 'video/webm';
 
   const handleProductClick = () => {
     controls.start({
@@ -52,7 +56,6 @@ const HeroSection: React.FC = () => {
           >
             <div className="relative" style={{ zIndex: 10 }}>
               <video
-                src={powerbankGif}
                 autoPlay
                 loop
                 muted
@@ -62,7 +65,9 @@ const HeroSection: React.FC = () => {
                   maxWidth: '1000px',
                   width: '90vw'
                 }}
-              />
+              >
+                <source src={videoSrc} type={videoType} />
+              </video>
               <div className="absolute inset-0 bg-gradient-to-r from-[#62C02C]/20 to-[#E6F52C]/20 rounded-2xl blur-3xl scale-110" style={{ zIndex: 5 }} />
             </div>
           </motion.div>
@@ -154,7 +159,6 @@ const HeroSection: React.FC = () => {
           >
             <div className="relative" style={{ zIndex: 10 }}>
               <video
-                src={powerbankGif}
                 autoPlay
                 loop
                 muted
@@ -164,7 +168,9 @@ const HeroSection: React.FC = () => {
                   maxWidth: '1000px',
                   width: '80vw'
                 }}
-              />
+              >
+                <source src={videoSrc} type={videoType} />
+              </video>
               <div className="absolute inset-0 bg-gradient-to-r from-[#62C02C]/20 to-[#E6F52C]/20 rounded-2xl blur-3xl scale-110" style={{ zIndex: 5 }} />
             </div>
           </motion.div>
