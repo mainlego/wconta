@@ -1,0 +1,15 @@
+open serwer2578962.home.pl
+123123222@wkontakcieapp.pl
+kypvaz-Woqxer-vidnaf8
+binary
+cd public_html
+lcd dist
+put index.html
+lcd assets
+cd assets
+mput *.png
+mput *.webm
+mput *.gif
+mput *.css
+mput *.js
+bye

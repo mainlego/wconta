@@ -2,6 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Safari-specific fixes */
+@supports (-webkit-appearance: none) {
+  /* Fix for gradient rendering in Safari */
+  .bg-gradient-to-br,
+  .bg-gradient-to-r,
+  .bg-gradient-to-t,
+  .bg-gradient-to-b {
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+  }
+  
+  /* Optimize performance for Safari */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Fix backdrop filters in Safari */
+  .backdrop-blur-sm,
+  .backdrop-blur-md,
+  .backdrop-blur-lg,
+  .backdrop-blur-xl,
+  .backdrop-blur-2xl,
+  .backdrop-blur-3xl {
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+  }
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
@@ -82,12 +111,43 @@ textarea:focus {
 .glass {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  background-color: rgba(31, 41, 55, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Header backdrop effect */
 .header-backdrop {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  background-color: rgba(17, 24, 39, 0.95);
+}
+
+/* Safari performance optimizations */
+@media not all and (min-resolution:.001dpcm) { 
+  @supports (-webkit-appearance:none) {
+    /* Disable complex animations in Safari */
+    .animate-pulse,
+    .animate-bounce,
+    .animate-spin {
+      animation: none !important;
+    }
+    
+    /* Simplify gradients for better performance */
+    .from-\[\#62C02C\]\/20,
+    .to-\[\#E6F52C\]\/20 {
+      opacity: 0.9;
+    }
+    
+    /* GPU acceleration for transforms */
+    [class*="transform"],
+    [class*="translate"],
+    [class*="rotate"],
+    [class*="scale"] {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      will-change: transform;
+    }
+  }
 }
 
 /* Leaflet Map Styles */

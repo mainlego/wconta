@@ -61,12 +61,14 @@ const HeroSection: React.FC = () => {
                   alt="Powerbank"
                   loading="lazy"
                   onLoad={() => setGifLoaded(true)}
-                  className="w-full h-auto object-contain drop-shadow-2xl cursor-pointer block relative z-20"
+                  className="w-full h-auto object-contain cursor-pointer block relative z-20"
                   style={{ 
                     maxWidth: '1000px',
                     width: '90vw',
                     opacity: gifLoaded ? 1 : 0,
-                    transition: 'opacity 0.3s ease-in-out'
+                    transition: 'opacity 0.3s ease-in-out',
+                    filter: 'drop-shadow(0 25px 50px rgba(0, 0, 0, 0.5))',
+                    WebkitFilter: 'drop-shadow(0 25px 50px rgba(0, 0, 0, 0.5))'
                   }}
                 />
               ) : (
@@ -84,7 +86,9 @@ const HeroSection: React.FC = () => {
                   <source src={powerbankGifWebm} type="video/webm" />
                 </video>
               )}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#62C02C]/20 to-[#E6F52C]/20 rounded-2xl blur-3xl scale-110" style={{ zIndex: 5 }} />
+              {!isSafariBrowser && (
+                <div className="absolute inset-0 bg-gradient-to-r from-[#62C02C]/20 to-[#E6F52C]/20 rounded-2xl blur-3xl scale-110" style={{ zIndex: 5 }} />
+              )}
             </div>
           </motion.div>
 
@@ -180,12 +184,14 @@ const HeroSection: React.FC = () => {
                   alt="Powerbank"
                   loading="lazy"
                   onLoad={() => setGifLoaded(true)}
-                  className="w-full h-auto object-contain drop-shadow-2xl cursor-pointer block relative z-20"
+                  className="w-full h-auto object-contain cursor-pointer block relative z-20"
                   style={{ 
                     maxWidth: '1000px',
                     width: '80vw',
                     opacity: gifLoaded ? 1 : 0,
-                    transition: 'opacity 0.3s ease-in-out'
+                    transition: 'opacity 0.3s ease-in-out',
+                    filter: 'drop-shadow(0 25px 50px rgba(0, 0, 0, 0.5))',
+                    WebkitFilter: 'drop-shadow(0 25px 50px rgba(0, 0, 0, 0.5))'
                   }}
                 />
               ) : (
@@ -203,7 +209,9 @@ const HeroSection: React.FC = () => {
                   <source src={powerbankGifWebm} type="video/webm" />
                 </video>
               )}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#62C02C]/20 to-[#E6F52C]/20 rounded-2xl blur-3xl scale-110" style={{ zIndex: 5 }} />
+              {!isSafariBrowser && (
+                <div className="absolute inset-0 bg-gradient-to-r from-[#62C02C]/20 to-[#E6F52C]/20 rounded-2xl blur-3xl scale-110" style={{ zIndex: 5 }} />
+              )}
             </div>
           </motion.div>
         </div>

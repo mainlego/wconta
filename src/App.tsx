@@ -46,6 +46,24 @@ function App() {
               {!isSafariBrowser && <FloatingParticles />}
               {!isSafariBrowser && <CursorGlow />}
               <ScrollToTop />
+              {/* Safari performance warning - hidden from user */}
+              {isSafariBrowser && (
+                <style>{`
+                  /* Disable heavy animations in Safari */
+                  * {
+                    animation-duration: 0.1s !important;
+                    transition-duration: 0.1s !important;
+                  }
+                  .blur-xl, .blur-2xl, .blur-3xl {
+                    filter: none !important;
+                    -webkit-filter: none !important;
+                  }
+                  .backdrop-blur-sm, .backdrop-blur-md, .backdrop-blur-lg {
+                    backdrop-filter: blur(8px) !important;
+                    -webkit-backdrop-filter: blur(8px) !important;
+                  }
+                `}</style>
+              )}
               <div className="relative z-10">
                 <Header />
                 <main>

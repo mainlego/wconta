@@ -19,7 +19,9 @@
       "Bash(npm run build:*)",
       "Bash(git reset:*)",
       "Bash(git lfs track:*)",
-      "Bash(git subtree push:*)"
+      "Bash(git subtree push:*)",
+      "Bash(ftp:*)",
+      "Bash(powershell:*)"
     ],
     "deny": [],
     "ask": []

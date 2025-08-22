@@ -78,12 +78,21 @@ const StationShowcase: React.FC = () => {
                   </video>
                 )}
                 
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                {/* Gradient Overlay - simplified for Safari */}
+                <div 
+                  className={`absolute inset-0 ${!isSafariBrowser ? "bg-gradient-to-t from-black/40 via-transparent to-transparent" : ""}`}
+                  style={{
+                    background: isSafariBrowser 
+                      ? 'linear-gradient(to top, rgba(0,0,0,0.4), transparent)'
+                      : undefined
+                  }} 
+                />
               </div>
               
-              {/* Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#62C02C]/20 to-[#E6F52C]/20 rounded-2xl blur-2xl -z-10" />
+              {/* Glow Effect - disabled for Safari */}
+              {!isSafariBrowser && (
+                <div className="absolute inset-0 bg-gradient-to-r from-[#62C02C]/20 to-[#E6F52C]/20 rounded-2xl blur-2xl -z-10" />
+              )}
             </div>
           </motion.div>
 
