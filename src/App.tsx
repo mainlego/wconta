@@ -13,6 +13,7 @@ import HowItWorksPage from './pages/HowItWorksPage';
 import BecomePartnerPage from './pages/BecomePartnerPage';
 import ContactPage from './pages/ContactPage';
 import ReturnPowerbankPage from './pages/ReturnPowerbankPage';
+import { isSafari } from './utils/browserDetection';
 
 // Component to handle scroll to top on route change
 const ScrollToTop: React.FC = () => {
@@ -27,6 +28,7 @@ const ScrollToTop: React.FC = () => {
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const isSafariBrowser = isSafari();
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
@@ -41,8 +43,8 @@ function App() {
           {!isLoading && (
             <>
               <AnimatedBackground />
-              <FloatingParticles />
-              <CursorGlow />
+              {!isSafariBrowser && <FloatingParticles />}
+              {!isSafariBrowser && <CursorGlow />}
               <ScrollToTop />
               <div className="relative z-10">
                 <Header />

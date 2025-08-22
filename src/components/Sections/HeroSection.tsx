@@ -10,6 +10,7 @@ const HeroSection: React.FC = () => {
   const { t } = useLanguage();
   const controls = useAnimation();
   const isSafariBrowser = isSafari();
+  const [gifLoaded, setGifLoaded] = React.useState(false);
 
   const handleProductClick = () => {
     controls.start({
@@ -58,10 +59,14 @@ const HeroSection: React.FC = () => {
                 <img
                   src={powerbankGif}
                   alt="Powerbank"
+                  loading="lazy"
+                  onLoad={() => setGifLoaded(true)}
                   className="w-full h-auto object-contain drop-shadow-2xl cursor-pointer block relative z-20"
                   style={{ 
                     maxWidth: '1000px',
-                    width: '90vw'
+                    width: '90vw',
+                    opacity: gifLoaded ? 1 : 0,
+                    transition: 'opacity 0.3s ease-in-out'
                   }}
                 />
               ) : (
@@ -173,10 +178,14 @@ const HeroSection: React.FC = () => {
                 <img
                   src={powerbankGif}
                   alt="Powerbank"
+                  loading="lazy"
+                  onLoad={() => setGifLoaded(true)}
                   className="w-full h-auto object-contain drop-shadow-2xl cursor-pointer block relative z-20"
                   style={{ 
                     maxWidth: '1000px',
-                    width: '80vw'
+                    width: '80vw',
+                    opacity: gifLoaded ? 1 : 0,
+                    transition: 'opacity 0.3s ease-in-out'
                   }}
                 />
               ) : (

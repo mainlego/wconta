@@ -9,6 +9,7 @@ import stationGif from '../../assets/station.gif';
 const StationShowcase: React.FC = () => {
   const { t } = useLanguage();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [gifLoaded, setGifLoaded] = useState(false);
   const isSafariBrowser = isSafari();
 
   const stationImages = [
@@ -57,7 +58,13 @@ const StationShowcase: React.FC = () => {
                   <img
                     src={stationGif}
                     alt="Station"
+                    loading="lazy"
+                    onLoad={() => setGifLoaded(true)}
                     className="w-full h-full object-cover"
+                    style={{
+                      opacity: gifLoaded ? 1 : 0,
+                      transition: 'opacity 0.3s ease-in-out'
+                    }}
                   />
                 ) : (
                   <video

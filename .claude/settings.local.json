@@ -18,7 +18,8 @@
       "Bash(npm run deploy:*)",
       "Bash(npm run build:*)",
       "Bash(git reset:*)",
-      "Bash(git lfs track:*)"
+      "Bash(git lfs track:*)",
+      "Bash(git subtree push:*)"
     ],
     "deny": [],
     "ask": []
