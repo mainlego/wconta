@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { useLanguage } from '../../contexts/LanguageContext';
-import { isSafari } from '../../utils/browserDetection';
+// import { isSafari } from '../../utils/browserDetection';
 import stationGifWebm from '../../assets/station gif.webm';
-import stationGifMov from '../../assets/station-gif.mov';
+// import stationGifMov from '../../assets/station-gif.mov';
 
 const StationShowcase: React.FC = () => {
   const { t } = useLanguage();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const videoSrc = isSafari() ? stationGifMov : stationGifWebm;
-  const videoType = isSafari() ? 'video/quicktime' : 'video/webm';
+  // Temporarily disable MOV for GitHub Pages deployment
+  const videoSrc = stationGifWebm;
+  const videoType = 'video/webm';
 
   const stationImages = [
     {
@@ -62,6 +63,7 @@ const StationShowcase: React.FC = () => {
                   className="w-full h-full object-cover"
                 >
                   <source src={videoSrc} type={videoType} />
+                  Your browser does not support the video tag.
                 </video>
                 
                 {/* Gradient Overlay */}
