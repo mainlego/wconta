@@ -2,16 +2,14 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { useLanguage } from '../../contexts/LanguageContext';
-// import { isSafari } from '../../utils/browserDetection';
+import { isSafari } from '../../utils/browserDetection';
 import stationGifWebm from '../../assets/station gif.webm';
-// import stationGifMov from '../../assets/station-gif.mov';
+import stationGif from '../../assets/station.gif';
 
 const StationShowcase: React.FC = () => {
   const { t } = useLanguage();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  // Temporarily disable MOV for GitHub Pages deployment
-  const videoSrc = stationGifWebm;
-  const videoType = 'video/webm';
+  const isSafariBrowser = isSafari();
 
   const stationImages = [
     {
@@ -55,16 +53,23 @@ const StationShowcase: React.FC = () => {
             <div className="relative max-w-lg mx-auto">
               {/* Main Video Container */}
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border-2 border-[#62C02C]/30">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover"
-                >
-                  <source src={videoSrc} type={videoType} />
-                  Your browser does not support the video tag.
-                </video>
+                {isSafariBrowser ? (
+                  <img
+                    src={stationGif}
+                    alt="Station"
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
+                  >
+                    <source src={stationGifWebm} type="video/webm" />
+                  </video>
+                )}
                 
                 {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />

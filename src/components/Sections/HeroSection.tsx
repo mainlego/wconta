@@ -2,16 +2,14 @@ import React from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { Link } from 'react-router-dom';
-// import { isSafari } from '../../utils/browserDetection';
+import { isSafari } from '../../utils/browserDetection';
 import powerbankGifWebm from '../../assets/powerbank gif.webm';
-// import powerbankGifMov from '../../assets/powerbank-gif.mov';
+import powerbankGif from '../../assets/powerbank.gif';
 
 const HeroSection: React.FC = () => {
   const { t } = useLanguage();
   const controls = useAnimation();
-  // Temporarily disable MOV for GitHub Pages deployment
-  const videoSrc = powerbankGifWebm;
-  const videoType = 'video/webm';
+  const isSafariBrowser = isSafari();
 
   const handleProductClick = () => {
     controls.start({
@@ -56,20 +54,31 @@ const HeroSection: React.FC = () => {
             className="flex justify-center mb-8"
           >
             <div className="relative" style={{ zIndex: 10 }}>
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-auto object-contain drop-shadow-2xl cursor-pointer block relative z-20"
-                style={{ 
-                  maxWidth: '1000px',
-                  width: '90vw'
-                }}
-              >
-                <source src={videoSrc} type={videoType} />
-                Your browser does not support the video tag.
-              </video>
+              {isSafariBrowser ? (
+                <img
+                  src={powerbankGif}
+                  alt="Powerbank"
+                  className="w-full h-auto object-contain drop-shadow-2xl cursor-pointer block relative z-20"
+                  style={{ 
+                    maxWidth: '1000px',
+                    width: '90vw'
+                  }}
+                />
+              ) : (
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-auto object-contain drop-shadow-2xl cursor-pointer block relative z-20"
+                  style={{ 
+                    maxWidth: '1000px',
+                    width: '90vw'
+                  }}
+                >
+                  <source src={powerbankGifWebm} type="video/webm" />
+                </video>
+              )}
               <div className="absolute inset-0 bg-gradient-to-r from-[#62C02C]/20 to-[#E6F52C]/20 rounded-2xl blur-3xl scale-110" style={{ zIndex: 5 }} />
             </div>
           </motion.div>
@@ -160,20 +169,31 @@ const HeroSection: React.FC = () => {
             className="flex justify-center"
           >
             <div className="relative" style={{ zIndex: 10 }}>
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-auto object-contain drop-shadow-2xl cursor-pointer block relative z-20"
-                style={{ 
-                  maxWidth: '1000px',
-                  width: '80vw'
-                }}
-              >
-                <source src={videoSrc} type={videoType} />
-                Your browser does not support the video tag.
-              </video>
+              {isSafariBrowser ? (
+                <img
+                  src={powerbankGif}
+                  alt="Powerbank"
+                  className="w-full h-auto object-contain drop-shadow-2xl cursor-pointer block relative z-20"
+                  style={{ 
+                    maxWidth: '1000px',
+                    width: '80vw'
+                  }}
+                />
+              ) : (
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-auto object-contain drop-shadow-2xl cursor-pointer block relative z-20"
+                  style={{ 
+                    maxWidth: '1000px',
+                    width: '80vw'
+                  }}
+                >
+                  <source src={powerbankGifWebm} type="video/webm" />
+                </video>
+              )}
               <div className="absolute inset-0 bg-gradient-to-r from-[#62C02C]/20 to-[#E6F52C]/20 rounded-2xl blur-3xl scale-110" style={{ zIndex: 5 }} />
             </div>
           </motion.div>
